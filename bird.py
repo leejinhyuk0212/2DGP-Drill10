@@ -18,15 +18,24 @@ class Bird:
         self.x, self.y = x, y
         self.velocity = velocity
         self.frame = 0.0
+        self.dir = 1
 
     def draw(self):
-        self.image.clip_draw(int(self.frame) * 184, 340, 184, 169, self.x, self.y)
+        if self.dir == 1:
+            self.image.clip_draw(int(self.frame) * 184, 340, 184, 169, self.x, self.y)
+
+        else:
+            self.image.clip_composite_draw(int(self.frame) * 184, 340, 184, 169, 0, 'h', self.x, self.y, 184, 169)
 
     def update(self):
         self.frame = (self.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        self.x += (self.velocity * game_framework.frame_time * PIXEL_PER_METER)
+        self.x += (self.dir * self.velocity * game_framework.frame_time * PIXEL_PER_METER)
 
-        if self.x < 0 or self.x >600:
-            pass
+        if self.x < 0:
+            self.x = 0
+            self.dir = 1
+        elif self.x > 1600:
+            self.x = 1600
+            self.dir = -1
 
 
