@@ -2,7 +2,7 @@ from pico2d import *
 import game_world
 import game_framework
 
-PIXEL_PER_METER = (1.0/0.03)
+PIXEL_PER_METER = (1.0/0.02)
 
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0/ TIME_PER_ACTION
