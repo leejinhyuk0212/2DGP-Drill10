@@ -22,10 +22,10 @@ class Bird:
 
     def draw(self):
         if self.dir == 1:
-            self.image.clip_draw(int(self.frame) * 184, 340, 184, 169, self.x, self.y)
+            self.image.clip_draw(int(self.frame) * 180, 340, 180, 160, self.x, self.y,100, 100)
 
         else:
-            self.image.clip_composite_draw(int(self.frame) * 184, 340, 184, 169, 0, 'h', self.x, self.y, 184, 169)
+            self.image.clip_composite_draw(int(self.frame) * 180, 340, 180, 160, 0, 'h', self.x, self.y, 100, 100)
 
     def update(self):
         self.frame = (self.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
